@@ -37,9 +37,6 @@
 ### ➕ Add Expense (Demo)
 ![Demo Add](./Screenshots/Demo_add.png)
 
-### 📋 Expense List View
-![List](./Screenshots/List.png)
-
 ### 🔍 Filtered Expense List
 ![Demo Filter List](./Screenshots/Demo_Filter_List.png)
 
@@ -64,6 +61,9 @@
 
 ### 🔓 After Login / Signup Dashboard
 ![After Login Signup](./Screenshots/After_Login_Signup_ET.png)
+
+### 📋 Expense List View
+![List](./Screenshots/List.png)
 
 ### 📉 Visuals After Login / Signup
 ![Visuals After Login](./Screenshots/Visuals_After_login_Signup.png)
