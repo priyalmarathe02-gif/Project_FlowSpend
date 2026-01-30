@@ -2,8 +2,8 @@
 
 ## 📸 Project Screenshots
 
-### 🚀 Start Page
-![Start Page](./Screenshots/Start.png)
+### 🏠 Main Landing Section
+![Main Head](./Screenshots/Main_Head.png)
 
 ### ❓ Why FlowSpend
 ![Why FlowSpend](./Screenshots/why.png)
@@ -11,22 +11,23 @@
 ### 🧭 How It Works
 ![How It Works](./Screenshots/How.png)
 
+### 👣 Your Expense Journey
+![Your Journey](./Screenshots/Your.png)
+
+### ⭐ Features Overview
+![Features](./Screenshots/Features.png)
+
+### ⭐ Additional Features
+![Features 2](./Screenshots/Features_2.png)
+
 ### 🎯 Try FlowSpend
 ![Try FlowSpend](./Screenshots/Try.png)
 
----
+### 🚀 Start Page
+![Start Page](./Screenshots/Start.png)
 
-### 🏠 Main Landing Section
-![Main Head](./Screenshots/Main_Head.png)
-
-### 👤 Create Account Page
-![Create Account](./Screenshots/Create_Account.png)
-
-### 🔐 Login Page
-![Login](./Screenshots/Login.png)
-
-### 🔓 After Login / Signup Dashboard
-![After Login Signup](./Screenshots/After_Login_Signup_ET.png)
+### 🧾 Footer Section
+![Footer](./Screenshots/Footer.png)
 
 ---
 
@@ -42,35 +43,30 @@
 ### 🔍 Filtered Expense List
 ![Demo Filter List](./Screenshots/Demo_Filter_List.png)
 
----
+### 📈 Demo Analytics View
+![Demo Visual](./Screenshots/Demo_Visual.png)
 
 ### 📊 Expense Visualizations
 ![Visuals](./Screenshots/Visuals.png)
 
-### 📈 Demo Analytics View
-![Demo Visual](./Screenshots/Demo_Visual.png)
+### 🧾 Demo Footer
+![Demo Footer](./Screenshots/Demo_Footer.png)
+
+
+---
+
+
+### 👤 Create Account Page
+![Create Account](./Screenshots/Create_Account.png)
+
+### 🔐 Login Page
+![Login](./Screenshots/Login.png)
+
+### 🔓 After Login / Signup Dashboard
+![After Login Signup](./Screenshots/After_Login_Signup_ET.png)
 
 ### 📉 Visuals After Login / Signup
 ![Visuals After Login](./Screenshots/Visuals_After_login_Signup.png)
 
----
 
-### ⭐ Features Overview
-![Features](./Screenshots/Features.png)
-
-### ⭐ Additional Features
-![Features 2](./Screenshots/Features_2.png)
-
----
-
-### 👣 Your Expense Journey
-![Your Journey](./Screenshots/Your.png)
-
----
-
-### 🧾 Footer Section
-![Footer](./Screenshots/Footer.png)
-
-### 🧾 Demo Footer
-![Demo Footer](./Screenshots/Demo_Footer.png)
 
