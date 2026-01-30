@@ -1,6 +1,8 @@
 # FlowSpend – Expense Tracker
 
+
 ## 📸 Project Screenshots
+
 
 ### 🏠 Main Landing Section
 ![Main Head](./Screenshots/Main_Head.png)
@@ -32,7 +34,9 @@
 ### 🧾 Footer Section
 ![Footer](./Screenshots/Footer.png)
 
+
 ---
+
 
 ### 🧪 Demo Overview
 ![Demo](./Screenshots/Demo.png)
@@ -50,7 +54,9 @@
 ![Demo Footer](./Screenshots/Demo_Footer.png)
 
 
+
 ---
+
 
 
 ### 👤 Create Account Page
