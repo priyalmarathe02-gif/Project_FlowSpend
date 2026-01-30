@@ -23,6 +23,9 @@
 ### 🎯 Try FlowSpend
 ![Try FlowSpend](./Screenshots/Try.png)
 
+### 📊 Expense Visualizations
+![Visuals](./Screenshots/Visuals.png)
+
 ### 🚀 Start Page
 ![Start Page](./Screenshots/Start.png)
 
@@ -42,9 +45,6 @@
 
 ### 📈 Demo Analytics View
 ![Demo Visual](./Screenshots/Demo_Visual.png)
-
-### 📊 Expense Visualizations
-![Visuals](./Screenshots/Visuals.png)
 
 ### 🧾 Demo Footer
 ![Demo Footer](./Screenshots/Demo_Footer.png)
