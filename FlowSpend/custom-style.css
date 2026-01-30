@@ -1,0 +1,125 @@
+/* Demo Mode Badge */
+.demo-status-badge {
+    background: rgba(250, 204, 21, 0.15);
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-right: 1rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(250, 204, 21, 0.2);
+}
+
+/* Split Layout: Text Card + Side Checkbox */
+.recurring-split-container {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    gap: 15px;
+    /* Gap between box and checkbox */
+    width: 100%;
+}
+
+/* The 'Type Box' for the text */
+.recurring-text-card {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    border-left: 3px solid var(--primary-accent);
+}
+
+/* Checkbox container side */
+.recurring-checkbox-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Custom Checkbox Styles */
+.custom-checkbox-wrapper {
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* FIX: Force dimensions + flex behavior to prevent overlap */
+    width: 24px;
+    height: 24px;
+    display: block;
+    flex-shrink: 0;
+}
+
+.custom-checkbox-wrapper input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* The Square Box */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Reset from right:0 to left:0 so it sits IN the wrapper */
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid var(--text-muted);
+    /* Fallback */
+    border: 2px solid #94A3B8;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+.custom-checkbox-wrapper:hover input~.checkmark {
+    border-color: var(--primary-accent, #0F766E);
+}
+
+/* Checked */
+.custom-checkbox-wrapper input:checked~.checkmark {
+    background-color: var(--primary-accent, #0F766E);
+    border-color: var(--primary-accent, #0F766E);
+}
+
+/* Checkmark Icon */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox-wrapper input:checked~.checkmark:after {
+    display: block;
+}
+
+.custom-checkbox-wrapper .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

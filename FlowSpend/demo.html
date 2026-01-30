@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Professional Expense Tracker - Track, analyze, and manage your expenses with style">
+    <title>FlowSpend - Where Your Money Flows With Purpose</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="custom-style.css">
+    <style>
+        /* Inline overrides for dashboard specific layout */
+        .dashboard-cards {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <!-- Header -->
+    <header>
+        <div class="header-content"
+            style="flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
+            <div class="logo">
+                <span class="logo-icon">◈</span>
+                <h1><span class="logo-accent">Flow</span>Spend</h1>
+            </div>
+            <div class="user-profile">
+                <!-- User name removed as requested -->
+                <div class="demo-status-badge">DEMO MODE</div>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"
+                    style="position: static; transform: none; margin-right: 1rem; width: 40px; height: 40px; font-size: 1.2rem;">
+                    <span class="theme-icon">◐</span>
+                </button>
+                <button id="logout-btn" class="btn btn-secondary"
+                    style="padding: 0.5rem 1rem; font-size: 0.9rem;">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Demo Mode Banner -->
+    <div
+        style="background: var(--bg-elevated); border-bottom: 1px solid var(--accent-gold); padding: 0.8rem; text-align: center; color: var(--text-primary); font-weight: 500; font-size: 0.9rem;">
+        <span style="color: var(--accent-gold); margin-right: 0.5rem;">⚠</span>
+        Demo Mode: Data will be reset upon refresh. <a href="auth.html#signup"
+            style="color: var(--primary-accent); font-weight: 700; text-decoration: none;">Sign Up Free</a> to save
+        permanently.
+    </div>
+
+    <script>
+        window.isDemoMode = true;
+    </script>
+
+    <main class="container">
+        <!-- Dashboard Cards -->
+        <section class="dashboard-cards">
+            <div class="card total-card">
+                <div class="card-icon">₹</div>
+                <div class="card-content">
+                    <h3>Total Expenses</h3>
+                    <p class="amount" id="total-amount">₹0.00</p>
+                </div>
+            </div>
+            <div class="card budget-card">
+                <div class="card-icon">◈</div>
+                <div class="card-content">
+                    <h3>Budget</h3>
+                    <p class="amount" id="budget-display">₹0.00</p>
+                </div>
+            </div>
+            <div class="card remaining-card">
+                <div class="card-icon">▲</div>
+                <div class="card-content">
+                    <h3>Remaining</h3>
+                    <p class="amount" id="remaining-amount">₹0.00</p>
+                </div>
+            </div>
+            <div class="card count-card">
+                <div class="card-icon">#</div>
+                <div class="card-content">
+                    <h3>Total Transactions</h3>
+                    <p class="amount" id="expense-count">0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Expense Form -->
+        <section class="form-section card">
+            <h2>Add New Expense</h2>
+            <form id="expense-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Expense Name</label>
+                        <input type="text" id="name" placeholder="e.g., Grocery Shopping" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount" placeholder="0.00" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Food">Food & Dining</option>
+                            <option value="Transport">Transportation</option>
+                            <option value="Shopping">Shopping & Retail</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Other">Other Expenses</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="recurring-split-container">
+                        <div class="recurring-text-card">
+                            Recurring Monthly
+                        </div>
+                        <div class="recurring-checkbox-side">
+                            <label class="custom-checkbox-wrapper">
+                                <input type="checkbox" id="is-recurring">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submit-btn">
+                    <span id="btn-text">Add Expense</span>
+                </button>
+            </form>
+        </section>
+
+        <!-- Budget Settings -->
+        <section class="budget-section card">
+            <h2>Budget Settings</h2>
+            <div class="budget-controls">
+                <div class="form-group">
+                    <label for="budget">Monthly Budget (₹)</label>
+                    <input type="number" id="budget" placeholder="Set your monthly budget" min="0" step="0.01">
+                </div>
+                <button id="set-budget" class="btn btn-secondary">Save Budget</button>
+            </div>
+            <div id="budget-alert" class="budget-alert"></div>
+        </section>
+
+        <!-- Filters -->
+        <section class="filter-section card">
+            <h2>Filter Expenses</h2>
+            <div class="filter-controls">
+                <div class="form-group">
+                    <label for="filter-category">Category</label>
+                    <select id="filter-category">
+                        <option value="All">All Categories</option>
+                        <option value="Food">Food & Dining</option>
+                        <option value="Transport">Transportation</option>
+                        <option value="Shopping">Shopping & Retail</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other Expenses</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter-month">Month</label>
+                    <div style="position: relative;">
+                        <!-- Custom Text Input -->
+                        <input type="text" id="month-display" placeholder="Select Month" readonly
+                            style="width: 100%; cursor: pointer; background: var(--bg-card); caret-color: transparent;"
+                            onclick="try{document.getElementById('filter-month').showPicker()}catch(e){document.getElementById('filter-month').focus()}">
+
+                        <!-- Invisible Month Input (Source of Truth) -->
+                        <input type="month" id="filter-month"
+                            style="position: absolute; opacity: 0; width: 0; height: 0; bottom: 0; left: 0; pointer-events: none;">
+                    </div>
+                </div>
+                <button id="apply-filter" class="btn btn-primary"
+                    style="background: var(--primary); color: white; border: none;">Filter</button>
+                <button id="reset-filters" class="btn btn-secondary">Reset</button>
+            </div>
+        </section>
+
+        <!-- Expense Table -->
+        <section class="table-section card">
+            <div class="section-header">
+                <h2>Expense List</h2>
+                <button id="export-csv" class="btn btn-export">↓ Export CSV</button>
+            </div>
+            <div class="table-wrapper">
+                <table id="expense-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expense-tbody">
+                        <tr class="empty-state">
+                            <td colspan="6">
+                                <div class="empty-message">
+                                    <span class="empty-icon">—</span>
+                                    <p>No expenses recorded. Add your first expense above.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Analytics Dashboard -->
+        <section class="analytics-section">
+            <h2>Analytics Dashboard</h2>
+            <div class="charts-grid">
+                <div class="chart-card card">
+                    <h3>Category Breakdown</h3>
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card card">
+                    <h3>Monthly Trends</h3>
+                    <div class="chart-container">
+                        <canvas id="monthlyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 FlowSpend | Designed by Priyal Marathe</p>
+    </footer>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Expense</h2>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <form id="edit-form">
+                <input type="hidden" id="edit-id">
+                <div class="form-group">
+                    <label for="edit-name">Expense Name</label>
+                    <input type="text" id="edit-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-amount">Amount (₹)</label>
+                    <input type="number" id="edit-amount" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-category">Category</label>
+                    <select id="edit-category" required>
+                        <option value="Food">Food & Dining</option>
+                        <option value="Transport">Transportation</option>
+                        <option value="Shopping">Shopping & Retail</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other Expenses</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-date">Date</label>
+                    <input type="date" id="edit-date" required>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="edit-is-recurring">
+                        <span>Recurring Monthly</span>
+                    </label>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-edit">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

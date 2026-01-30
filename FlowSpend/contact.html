@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | FlowSpend</title>
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body class="info-page">
+    <div class="info-container">
+        <h1>Contact & Feedback</h1>
+        <p class="info-lead">Submit your queries, suggestions, or support requests below. Our team reviews and responds to all submissions within the platform.</p>
+        <form class="contact-form" autocomplete="off">
+            <label for="contact-type">Type</label>
+            <select id="contact-type" name="type" required>
+                <option value="query">General Query</option>
+                <option value="suggestion">Suggestion</option>
+                <option value="support">Support Request</option>
+            </select>
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required placeholder="Type your message..."></textarea>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="contact-confirmation" style="display:none;">
+            <p>Thank you for reaching out! Your submission has been received and will be reviewed by our team. We respond to all messages within the platform.</p>
+            <a href="index.html" class="info-back">← Back to FlowSpend</a>
+        </div>
+        <a href="index.html" class="info-back">← Back to FlowSpend</a>
+    </div>
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.querySelector('.contact-form').style.display = 'none';
+            document.querySelector('.contact-confirmation').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
