@@ -1,5 +1,5 @@
 # FlowSpend – Expense Tracker
-
+$ A personal finance tracking web application that helps users manage expenses, monitor spending patterns, and visualize financial data through interactive charts and analytics. Built using HTML5, CSS3, JavaScript, LocalStorage, and Chart.js.
 
 ## Project Screenshots
 
